@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit {
  
   }
 
-
+  product : string = "Products List";
   imageWidth : number = 60;
   showImage : boolean = false;
 
@@ -22,10 +22,19 @@ export class ProductListComponent implements OnInit {
       "productName" : "mobile",
       "productCode" : 4539,
       "releaseDate" : "23/2/2021",
-      "productPrice" : 234,
+      "productPrice" : "23400",
       "productRating": "good",
       "image" : "assets/images/mob.jpg"
+    },
+    {
+      "productName" : "Laptop",
+      "productCode" : 4235,
+      "releaseDate" : "22/3/2021",
+      "productPrice": "50000",
+      "productRating": "good",
+      "image" : "assets/images/la.jpg"
     }
+
   ];
 
 
