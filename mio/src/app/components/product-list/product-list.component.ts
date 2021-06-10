@@ -14,18 +14,24 @@ export class ProductListComponent implements OnInit {
   }
 
 
+  imageWidth : number = 60;
+  showImage : boolean = false;
+
   products : any = [
     {
       "productName" : "mobile",
       "productCode" : 4539,
       "releaseDate" : "23/2/2021",
       "productPrice" : 234,
-      "productRating": "good"
+      "productRating": "good",
+      "image" : "assets/images/mob.jpg"
     }
   ];
 
 
-
+  clickImage() : void {
+    this.showImage = !this.showImage;
+  }
 
 
 }
