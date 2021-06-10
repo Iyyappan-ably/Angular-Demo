@@ -10,14 +10,17 @@
         <div class="col-md-2">
             <h3>Filter by</h3>
         </div>
-        <div class="col-md-4">
-            <input type="text">
+        <div class="col-md-3">
+            <input type="text" class="form-control" [(ngModel)]="filterValue">
         </div>
     </div>
     <!--Second row-->
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-2">
             <h6>Filtered By</h6>
+        </div>
+        <div class="col-md-6">
+            {{filterValue}}
         </div>
     </div>
     <!--third row-->
@@ -29,13 +32,13 @@
                     <thead>
                         <tr>
                           <th>
-                            <button type="button" (click)="clickImage()" class="btn btn-primary">{{showImage ? "Hide" : "Show"}} image</button>
+                            <button type="button" (click)="clickImage()" class="btn btn-primary">{{showImage ? "HIDE" : "SHOW"}} IMAGE</button>
                           </th>
-                          <th>Product</th>
-                          <th>Code</th>
-                          <th>Available</th>
-                          <th>Price</th>
-                          <th>Rating</th>
+                          <th>PRODUCT</th>
+                          <th>CODE</th>
+                          <th>AVAILABLE FROM</th>
+                          <th>PRICE</th>
+                          <th>5 START RATING</th>
                         </tr>
                     </thead>
                     
@@ -43,9 +46,9 @@
                         <tr *ngFor="let k of products">
                             <td><img *ngIf="showImage" [src]="k.image" [style.width.px]="imageWidth"></td>
                             <td>{{k.productName}}</td>
-                            <td>{{k.productCode}}</td>
+                            <td>{{k.productCode | lowercase}}</td>
                             <td>{{k.releaseDate}}</td>
-                            <td>{{k.productPrice}}</td>
+                            <td>{{k.productPrice | currency : "INR" : "symbol"}}</td>
                             <td>{{k.productRating}}</td>
                         </tr>
              
