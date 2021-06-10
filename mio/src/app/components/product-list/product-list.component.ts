@@ -16,22 +16,23 @@ export class ProductListComponent implements OnInit {
   product : string = "Products List";
   imageWidth : number = 60;
   showImage : boolean = false;
+  filterValue : string = "cart";
 
   products : any = [
     {
-      "productName" : "mobile",
-      "productCode" : 4539,
+      "productName" : "Mobile",
+      "productCode" : "gj4539",
       "releaseDate" : "23/2/2021",
       "productPrice" : "23400",
-      "productRating": "good",
+      "productRating": "4.1",
       "image" : "assets/images/mob.jpg"
     },
     {
       "productName" : "Laptop",
-      "productCode" : 4235,
+      "productCode" : "jd4235",
       "releaseDate" : "22/3/2021",
       "productPrice": "50000",
-      "productRating": "good",
+      "productRating": "4.3",
       "image" : "assets/images/la.jpg"
     }
 
