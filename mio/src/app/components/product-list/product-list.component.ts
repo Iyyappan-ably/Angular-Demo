@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from 'src/app/Interfaces/product';
 
 @Component({
   selector: 'app-product-list',
@@ -10,7 +11,7 @@ export class ProductListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
- 
+       
   }
 
   product : string = "Products List";
@@ -18,10 +19,10 @@ export class ProductListComponent implements OnInit {
   showImage : boolean = false;
   filterValue : string = "cart";
 
-  products : any = [
+  products : IProduct[] = [
     {
       "productName" : "Mobile",
-      "productCode" : "gj4539",
+      "productCode" : "gj#4539",
       "releaseDate" : "23/2/2021",
       "productPrice" : "23400",
       "productRating": "4.1",
@@ -29,7 +30,7 @@ export class ProductListComponent implements OnInit {
     },
     {
       "productName" : "Laptop",
-      "productCode" : "jd4235",
+      "productCode" : "jo#235",
       "releaseDate" : "22/3/2021",
       "productPrice": "50000",
       "productRating": "4.3",

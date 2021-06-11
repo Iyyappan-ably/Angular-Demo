@@ -46,7 +46,7 @@
                         <tr *ngFor="let k of products">
                             <td><img *ngIf="showImage" [src]="k.image" [style.width.px]="imageWidth"></td>
                             <td>{{k.productName}}</td>
-                            <td>{{k.productCode | lowercase}}</td>
+                            <td>{{k.productCode | lowercase | converttoat : "#"}}</td>
                             <td>{{k.releaseDate}}</td>
                             <td>{{k.productPrice | currency : "INR" : "symbol"}}</td>
                             <td>{{k.productRating}}</td>
