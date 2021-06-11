@@ -8,17 +8,28 @@ import { IProduct } from 'src/app/Interfaces/product';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+
+  }
 
   ngOnInit(): void {
-       
   }
 
   product : string = "Products List";
   imageWidth : number = 60;
   showImage : boolean = false;
-  filterValue : string = "cart";
-
+  //---------------------------------------------------
+  private _filterValue : string = "";
+  get filter() : string {
+    return this._filterValue;
+  }
+  set filter(filterValue : string){
+    this._filterValue = filterValue;
+    this.filteredProducts = this.filtering(filterValue);
+  }
+  
+  //----------------------------------------------------
+   
   products : IProduct[] = [
     {
       "productName" : "Mobile",
@@ -36,9 +47,25 @@ export class ProductListComponent implements OnInit {
       "productRating": "4.3",
       "image" : "assets/images/la.jpg"
     }
-
   ];
 
+   get Products() : IProduct[]{
+     return this.products;
+   }
+
+   set Products(pro : IProduct[]){
+     this.products=pro;
+   } 
+   filteredProducts : IProduct[] = this.Products;
+
+  //---------------------------------methods---------------------------------------
+
+  filtering(value : string) : IProduct[] {
+    let prod = this.products.filter((pro :IProduct) => {
+     return pro.productName.toLocaleLowerCase().includes(value.toLocaleLowerCase());
+    });
+    return prod;
+  }
 
   clickImage() : void {
     this.showImage = !this.showImage;
