@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/Interfaces/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -8,17 +9,45 @@ import { IProduct } from 'src/app/Interfaces/product';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { 
+  constructor(private productService: ProductService) { 
 
   }
+  ngOnInit(){
 
-  ngOnInit(): void {
+    this.productService.getProducts().subscribe(
+      
+      (req : IProduct[])=>{
+          console.log("required data arrived");
+          this.Products = req;
+          this.filteredProducts = this.Products;      //next method
+      },
+      (err : any)=>{
+          console.log("error");                       //error method
+      },
+      ()=>{
+          console.log("no data ");                     //complete method
+      }
+    )
   }
+
+  //-----------------------------------------
 
   product : string = "Products List";
+  
   imageWidth : number = 60;
+  
+  products : IProduct[] = [];
+  get Products() : IProduct[]{
+    return this.products;
+  }
+  set Products(pro : IProduct[]){
+    this.products=pro;
+  } 
+  
+  filteredProducts : IProduct[] = [];
+
   showImage : boolean = false;
-  //---------------------------------------------------
+  
   private _filterValue : string = "";
   get filter() : string {
     return this._filterValue;
@@ -28,36 +57,7 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = this.filtering(filterValue);
   }
   
-  //----------------------------------------------------
-   
-  products : IProduct[] = [
-    {
-      "productName" : "Mobile",
-      "productCode" : "gj#4539",
-      "releaseDate" : "23/2/2021",
-      "productPrice" : "23400",
-      "productRating":  3,
-      "image" : "assets/images/mob.jpg"
-    },
-    {
-      "productName" : "Laptop",
-      "productCode" : "jo#235",
-      "releaseDate" : "22/3/2021",
-      "productPrice": "50000",
-      "productRating": 4,
-      "image" : "assets/images/la.jpg"
-    }
-  ];
-
-   get Products() : IProduct[]{
-     return this.products;
-   }
-
-   set Products(pro : IProduct[]){
-     this.products=pro;
-   } 
-   filteredProducts : IProduct[] = this.Products;
-   collectedValue : string = '';
+  collectedValue : string = '';
 
 
   //---------------------------------methods---------------------------------------

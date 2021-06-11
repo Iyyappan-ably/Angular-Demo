@@ -23,7 +23,7 @@ export class StarComponent implements OnInit, OnChanges {
 
 
  emit(){
-   this.emitter.emit("The Rating is :" + this.rating);
+   this.emitter.emit("The Rating is : " + this.rating);
  }
 
 

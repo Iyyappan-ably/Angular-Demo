@@ -14,7 +14,12 @@
             <input type="text" class="form-control" [(ngModel)]="filter">
         </div>
         <div class="col-md-3">
-            {{collectedValue}}
+            <div *ngIf="filteredProducts.length>0">
+                   {{collectedValue}}
+            </div>
+            <div *ngIf="filteredProducts.length==0">
+                <h5 style="color:orangered;">No Results Found</h5>
+            </div>
         </div>
     </div>
     <!--Second row-->
