@@ -36,7 +36,7 @@ export class ProductListComponent implements OnInit {
       "productCode" : "gj#4539",
       "releaseDate" : "23/2/2021",
       "productPrice" : "23400",
-      "productRating": "4.1",
+      "productRating":  3,
       "image" : "assets/images/mob.jpg"
     },
     {
@@ -44,7 +44,7 @@ export class ProductListComponent implements OnInit {
       "productCode" : "jo#235",
       "releaseDate" : "22/3/2021",
       "productPrice": "50000",
-      "productRating": "4.3",
+      "productRating": 4,
       "image" : "assets/images/la.jpg"
     }
   ];
@@ -57,8 +57,13 @@ export class ProductListComponent implements OnInit {
      this.products=pro;
    } 
    filteredProducts : IProduct[] = this.Products;
+   collectedValue : string = '';
+
 
   //---------------------------------methods---------------------------------------
+  clickImage() : void {
+    this.showImage = !this.showImage;
+  }
 
   filtering(value : string) : IProduct[] {
     let prod = this.products.filter((pro :IProduct) => {
@@ -67,9 +72,10 @@ export class ProductListComponent implements OnInit {
     return prod;
   }
 
-  clickImage() : void {
-    this.showImage = !this.showImage;
+  
+  collect(val : string){
+      this.collectedValue=val;    
   }
-
+   
 
 }

@@ -13,6 +13,9 @@
         <div class="col-md-3">
             <input type="text" class="form-control" [(ngModel)]="filter">
         </div>
+        <div class="col-md-3">
+            {{collectedValue}}
+        </div>
     </div>
     <!--Second row-->
     <div class="row">
@@ -49,7 +52,7 @@
                             <td>{{k.productCode | lowercase | converttoat : "#"}}</td>
                             <td>{{k.releaseDate}}</td>
                             <td>{{k.productPrice | currency : "INR" : "symbol"}}</td>
-                            <td>{{k.productRating}}</td>
+                            <td><app-star [rating]="k.productRating" (emitter)="collect($event)"></app-star></td>
                         </tr>
              
 

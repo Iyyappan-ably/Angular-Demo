@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ConvertToAtPipe } from './CustomPipes/ConvertToAt';
+import { StarComponent } from './components/star/star.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    ConvertToAtPipe
+    ConvertToAtPipe,
+    StarComponent
   ],
   imports: [
     BrowserModule,
