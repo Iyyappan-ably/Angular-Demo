@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/Interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -7,27 +8,33 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
 
   constructor(private productService: ProductService) { 
 
   }
   ngOnInit(){
 
-    this.productService.getProducts().subscribe(
+    this.sub = this.productService.getProducts().subscribe(
       
       (req : IProduct[])=>{
           console.log("required data arrived");
           this.Products = req;
-          this.filteredProducts = this.Products;      //next method
+          this.filteredProducts = this.Products; 
+                                                       //next method
       },
       (err : any)=>{
-          console.log("error");                       //error method
+          console.log(err);                            //error method
       },
       ()=>{
           console.log("no data ");                     //complete method
       }
     )
+  }
+
+  ngOnDestroy(){
+         console.log("unsubscribed");
+         this.sub.unsubscribe();
   }
 
   //-----------------------------------------
@@ -59,6 +66,7 @@ export class ProductListComponent implements OnInit {
   
   collectedValue : string = '';
 
+  sub! : Subscription ;                              // ! --> declare it now and assign it later
 
   //---------------------------------methods---------------------------------------
   clickImage() : void {
